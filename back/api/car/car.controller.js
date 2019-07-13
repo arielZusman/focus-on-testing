@@ -1,14 +1,37 @@
 const carService = require('./car.service');
 
-async function getCars(req, res) {}
+async function getCars(req, res) {
+    const cars = await carService.query();
+    res.json(cars);
+}
 
-async function getCar(req, res) {}
+async function getCar(req, res) {
+    const carId = req.params.carId;
+    const [car, reviews] = await Promise.all([
+        carService.getById(carId),
+        reviewService.query({ carId })
+    ]);
 
-async function deleteCar(req, res) {}
+    res.json({ car, reviews });
+}
 
-async function createCar(req, res) {}
+async function deleteCar(req, res) {
+    const carId = req.params.carId;
+    const result = await carService.remove(carId);
+    res.end(`Car ${carId} Deleted `);
+}
 
-async function updateCar(req, res) {}
+async function createCar(req, res) {
+    const car = req.body;
+    const createdCar = await carService.add(car);
+    res.json({ car: createdCar });
+}
+
+async function updateCar(req, res) {
+    const car = req.body;
+    const updatedCar = await carService.update(car);
+    res.json({ car: updatedCar });
+}
 
 module.exports = {
     getCars,
