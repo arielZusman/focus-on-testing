@@ -1,4 +1,4 @@
-const fs = require('fs')
+const fs = require('fs');
 
 const logsDir = './logs';
 if (!fs.existsSync(logsDir)) {
@@ -11,25 +11,25 @@ function getTime() {
     return now.toUTCString();
 }
 
-function doLog(line, level='Debug') {
-    line = `${getTime()} - ${level} - ${line}` 
-    
-    const content = fs.readFileSync('./logs/log.log')
-    fs.writeFileSync('./logs/log.log', content + '\n' + line)
+function doLog(line, level = 'Debug') {
+    line = `${getTime()} - ${level} - ${line}`;
+
+    const content = fs.readFileSync('./logs/log.log');
+    fs.writeFileSync('./logs/log.log', content + '\n' + line);
     console.log(line);
 }
 
 module.exports = {
-    debug(line){
-        doLog(line, "Debug")
+    debug(line) {
+        doLog(line, 'Debug');
     },
-    info(line){
-        doLog(line, "Info")
+    info(line) {
+        doLog(line, 'Info');
     },
-    warn(line){
-        doLog(line, "Warn")
+    warn(line) {
+        doLog(line, 'Warn');
     },
-    error(line){
-        doLog(line, "Error")
+    error(line) {
+        doLog(line, 'Error');
     }
-}
+};
