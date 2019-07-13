@@ -1,6 +1,7 @@
-build a basic vue-cli app
-add http-service
-add socket-service (on,emit) (server and client)
-FRONT: add user-module, user-service
-
-MAKE SURE session works
+1. add 5 cars to db
+2. add 3 users
+3. add 10 reviews mak sure 1 car does not have reviews
+4. refactor backend
+5. add jest to backend and frontend
+6. add cypress to frontend
+7. refactor frontend
