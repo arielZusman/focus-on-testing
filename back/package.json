@@ -5,7 +5,8 @@
     "main": "server.js",
     "scripts": {
         "server:dev": "NODE_ENV=development nodemon app.js",
-        "server:prod": "node app.js"
+        "server:prod": "node app.js",
+        "test" : "jest --watchAll"
     },
     "author": "moshe pinhasi",
     "license": "ISC",
@@ -20,6 +21,7 @@
         "socket.io": "^2.2.0"
     },
     "devDependencies": {
+        "jest": "^24.8.0",
         "nodemon": "^1.19.1"
     }
 }
