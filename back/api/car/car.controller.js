@@ -1,4 +1,5 @@
 const carService = require('./car.service');
+const reviewService = require('../review/review.service');
 
 async function getCars(req, res) {
     const cars = await carService.query();
@@ -21,7 +22,7 @@ async function deleteCar(req, res) {
     res.end(`Car ${carId} Deleted `);
 }
 
-async function createCar(req, res) {
+async function addCar(req, res) {
     const car = req.body;
     const createdCar = await carService.add(car);
     res.json({ car: createdCar });
@@ -37,6 +38,6 @@ module.exports = {
     getCars,
     getCar,
     deleteCar,
-    createCar,
+    addCar,
     updateCar
 };
