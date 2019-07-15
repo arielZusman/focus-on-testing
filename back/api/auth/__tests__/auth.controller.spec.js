@@ -2,21 +2,29 @@ import { login, signup, logout } from '../auth.controller';
 import authService from '../auth.service';
 import logger from '../../../services/logger.service';
 
+const mockRequest = body => ({
+    session: { destroy: jest.fn() },
+    body
+});
+
+const mockResponse = () => {
+    const res = {};
+    res.status = jest.fn().mockReturnValue(res);
+    res.json = jest.fn().mockReturnValue(res);
+    res.send = jest.fn().mockReturnValue(res);
+    return res;
+};
 describe('Auth controller', () => {
     describe('login() function', () => {
         it('should return authenticated user', async () => {
-            // mock req object
-            const req = {
-                body: { email: 'test.user@test.com', username: 'testUser' },
-                session: {
-                    user: null
-                }
-            };
+            expect.assertions(2);
 
+            const req = mockRequest({
+                email: 'test.user@test.com',
+                username: 'testUser'
+            });
             // mock res object
-            const res = {
-                json: jest.fn()
-            };
+            const res = mockResponse();
 
             // mock for authService.login response
             const authServiceResponse = {
@@ -26,10 +34,10 @@ describe('Auth controller', () => {
             };
             // this is required in async test to make sure the test does not exit before
             // running the expectations
-            expect.assertions(2);
 
-
-            jest.spyOn(authService, 'login').mockResolvedValue(authServiceResponse);
+            jest.spyOn(authService, 'login').mockResolvedValue(
+                authServiceResponse
+            );
 
             await login(req, res);
             expect(res.json).toHaveBeenCalledWith(authServiceResponse);
@@ -37,9 +45,18 @@ describe('Auth controller', () => {
         });
 
         it('should return 401 when user is invalid', async () => {
-            const req = {
-                body: {email: 'test.user@test.com'}
-            }
-        })
+            expect.assertions(2);
+            const req = mockRequest({ email: 'invalidUser@test.com' });
+            const res = mockResponse();
+
+
+            // make the authService.login reject
+            jest.spyOn(authService, 'login').mockRejectedValue('ERROR MSG');
+
+            await login(req, res);
+
+            expect(res.status).toHaveBeenCalledWith(401);
+            expect(res.send).toHaveBeenCalledWith({ error: 'ERROR MSG' });
+        });
     });
 });
