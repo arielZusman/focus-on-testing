@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 const app = express();
@@ -16,7 +15,6 @@ const carRoutes = require('./api/car/car.routes');
 const logger = require('./services/logger.service');
 const socketService = require('./services/socket.service');
 
-app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(
     session({
@@ -29,7 +27,7 @@ app.use(
 
 if (process.env.NODE_ENV !== 'production') {
     const corsOptions = {
-        origin: 'http://127.0.0.1:8080',
+        origin: ['http://127.0.0.1:8080', 'http://localhost:8080'],
         credentials: true
     };
     app.use(cors(corsOptions));

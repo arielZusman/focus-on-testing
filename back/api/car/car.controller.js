@@ -2,6 +2,7 @@ const carService = require('./car.service');
 const reviewService = require('../review/review.service');
 
 async function getCars(req, res) {
+    console.log('Session Car: ',req.session.id);
     const cars = await carService.query();
     res.json(cars);
 }

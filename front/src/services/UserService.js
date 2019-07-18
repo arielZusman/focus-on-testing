@@ -1,25 +1,24 @@
-import HttpService from './HttpService'
+import HttpService from "./HttpService";
 
 export default {
-    login,
-    logout,
-    signup,
-    getUsers
-}
+  login,
+  logout,
+  signup,
+  getUsers
+};
 
-function login(userCred) {
-    HttpService.ajax('api/auth/login', 'post', userCred)
-    .then(res => console.log(res))
+async function login(userCred) {
+  const user = await HttpService.ajax("api/auth/login", "post", userCred);
+  return user;
 }
-function signup(userCred) {
-    HttpService.ajax('api/auth/signup', 'post', userCred)
-    .then(res => console.log(res))
+async function signup(userCred) {
+  const user = await HttpService.ajax("api/auth/signup", "post", userCred);
+  return user;
 }
-function logout() {
-    HttpService.ajax('api/auth/logout', 'post')
-    .then(res => console.log(res))
+async function logout() {
+  const result = await HttpService.ajax("api/auth/logout", "post");
+  return result;
 }
 function getUsers() {
-    HttpService.ajax('api/user')
-    .then(res => console.log(res))
+  HttpService.ajax("api/user").then(res => console.log(res));
 }
