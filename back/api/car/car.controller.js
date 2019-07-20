@@ -9,6 +9,8 @@ async function getCars(req, res) {
 
 async function getCar(req, res) {
     const carId = req.params.carId;
+    console.log(carId);
+    
     const [car, reviews] = await Promise.all([
         carService.getById(carId),
         reviewService.query({ carId })

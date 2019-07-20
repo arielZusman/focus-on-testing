@@ -1,36 +1,40 @@
 <template>
-<section class="review-form">
+  <section class="bg-light px-5 py-3 ">
     <h1>
-        Review form
+      Review form
     </h1>
     <form @submit.prevent="saveReview">
-        <textarea id="" cols="30" rows="10" v-model="content" placeholder="Your opinion matters.."/>
-        <br/>
-        <button>Publish</button>
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          cols="30"
+          rows="5"
+          v-model="content"
+          placeholder="Your opinion matters.."
+        />
+      </div>
+      <br>
+      <button class="btn btn-primary">
+        Publish
+      </button>
     </form>
-</section>
+  </section>
 </template>
 
 <script>
 export default {
-    data(){
-        return {
-            content:  ''
-        }
-    },
-    methods:{
-        saveReview(){
-            this.$emit('save-review', {content: this.content})
-            this.content = '';
-        }
+  data() {
+    return {
+      content: ""
+    };
+  },
+  methods: {
+    saveReview() {
+      this.$emit("save-review", { content: this.content });
+      this.content = "";
     }
-}
+  }
+};
 </script>
 
-<style>
-.review-form {
-    background-color: lightgoldenrodyellow;
-    padding: 5px;
-    text-align: center;
-}
-</style>
+<style></style>

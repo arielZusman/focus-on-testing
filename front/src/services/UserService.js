@@ -4,7 +4,8 @@ export default {
   login,
   logout,
   signup,
-  getUsers
+  getUsers,
+  getById
 };
 
 async function login(userCred) {
@@ -19,6 +20,11 @@ async function logout() {
   const result = await HttpService.ajax("api/auth/logout", "post");
   return result;
 }
+
+async function getById(id) {
+  return await HttpService.ajax(`api/user/${id}`);
+}
+
 function getUsers() {
   HttpService.ajax("api/user").then(res => console.log(res));
 }

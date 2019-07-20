@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <AppHeader/>
-    <router-view class="container py-5"/>
+    <AppHeader />
+    <router-view class="container py-3" />
   </div>
 </template>
 

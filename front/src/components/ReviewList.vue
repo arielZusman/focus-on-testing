@@ -1,13 +1,17 @@
 <template>
-    <ul class="review-list">
-        <li class="review-list-item" v-for="review in reviews" :key="review._id">
-            <review-preview
-                @user-clicked="$emit('user-clicked',review.userId)"
-                @car-clicked="$emit('car-clicked',review.carId)"
-                :review="review"
-            />
-        </li>
-    </ul>
+  <ul class="list-group">
+    <li
+      class="list-group-item"
+      v-for="review in reviews"
+      :key="review._id"
+    >
+      <review-preview
+        @user-clicked="$emit('user-clicked',review.userId)"
+        @car-clicked="$emit('car-clicked',review.carId)"
+        :review="review"
+      />
+    </li>
+  </ul>
 </template>
 
 <script>

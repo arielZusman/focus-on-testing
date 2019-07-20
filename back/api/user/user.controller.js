@@ -1,8 +1,10 @@
 const userService = require('./user.service');
+const reviewService = require('../review/review.service');
 
 async function getUser(req, res) {
     const user = await userService.getById(req.params.id);
-    res.send(user);
+    const reviews = await reviewService.getUserReviews(req.params.id);
+    res.json({ user, reviews });
 }
 
 const getUsers = async (req, res) => {

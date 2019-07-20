@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
 import CarsPage from "./views/CarsPage.vue";
 import CarDetails from "./views/CarDetails.vue";
 import UserDetails from "./views/UserDetails.vue";
@@ -9,12 +8,12 @@ import Login from "./views/Login.vue";
 Vue.use(Router);
 
 export default new Router({
-  linkActiveClass: 'active',
+  linkActiveClass: "active",
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      name: "car-page",
+      component: CarsPage
     },
     {
       path: "/login",
@@ -22,19 +21,16 @@ export default new Router({
       component: Login
     },
     {
-      path: "/car",
-      name: "car-page",
-      component: CarsPage
-    },
-    {
       path: "/car/:id",
       name: "car-details",
-      component: CarDetails
+      component: CarDetails,
+      props: true
     },
     {
       path: "/user/:id",
       name: "userDetails",
-      component: UserDetails
+      component: UserDetails,
+      props: true
     }
   ]
 });

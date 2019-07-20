@@ -1,7 +1,7 @@
 <template>
-<section class="car-page">
+  <section class="car-page">
     <car-list :cars="cars" />
-</section>
+  </section>
 </template>
 
 <script>
