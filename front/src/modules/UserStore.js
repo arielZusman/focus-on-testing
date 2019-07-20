@@ -5,11 +5,7 @@ export default {
   namespaced: true,
 
   state: {
-    user: {
-      _id: '',
-      username: '',
-      email: ''
-    }
+    user: null
   },
   getters: {},
   mutations: {
@@ -21,14 +17,14 @@ export default {
     }
   },
   actions: {
-    async login({ commit }, { userCred }) {
+    async login({ commit }, userCred) {
       const user = await UserService.login(userCred);
       commit(SET_USER, user);
 
       localStorage.setItem('loggedInUser', JSON.stringify(user));
       return user;
     },
-    async signup({ commit }, { userCred }) {
+    async signup({ commit }, userCred) {
       const user = await UserService.signup(userCred);
       commit(SET_USER, user);
       localStorage.setItem('loggedInUser', JSON.stringify(user));

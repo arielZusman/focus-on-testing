@@ -52,6 +52,10 @@
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex';
+
+const { mapActions } = createNamespacedHelpers('UserStore');
+
 export default {
   name: 'Login',
   data() {
@@ -87,9 +91,11 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['login', 'signup']),
     async submit() {
-      const type = this.isLogin ? 'login' : 'signup';
-      await this.$store.dispatch({ type, userCred: this.userCred });
+      (await this.isLogin)
+        ? this.login(this.userCred)
+        : this.signup(this.userCred);
       this.$router.back();
     },
     switchForms() {

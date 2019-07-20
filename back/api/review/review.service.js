@@ -3,7 +3,7 @@ const dbService = require('../../services/db.service');
 const ObjectId = require('mongodb').ObjectId;
 
 function addReview({ userId, carId, content }) {
-    var review = {
+    const review = {
         userId: new ObjectId(userId),
         carId: new ObjectId(carId),
         content
@@ -14,7 +14,7 @@ function addReview({ userId, carId, content }) {
             .then(db => db.collection('review').insertOne(review))
             // .then (({insertedId: _id}) => ({...review, _id}))
             .then(res => {
-                return getById(res.insertedId);
+                return res.ops[0];
             })
     );
 }

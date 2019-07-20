@@ -47,15 +47,18 @@ export default {
     ...mapState(['user'])
   },
   methods: {
-    saveReview(review) {
+    async saveReview(review) {
       const fullReview = {
         ...review,
         carId: this.carId,
         userId: this.user._id
       };
-      ReviewService.addReview(fullReview).then(review => {
-        this.reviews.push(review);
-      });
+      let reviewResponse = await ReviewService.addReview(fullReview);
+
+      reviewResponse.car = this.car;
+      reviewResponse.user = this.user;
+
+      this.reviews.push(reviewResponse);
     }
   },
   watch: {
