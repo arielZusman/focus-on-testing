@@ -13,7 +13,6 @@ const carRoutes = require('./api/car/car.routes');
 const reviewRoutes = require('./api/review/review.route');
 
 const logger = require('./services/logger.service');
-const socketService = require('./services/socket.service');
 
 app.use(bodyParser.json());
 app.use(
@@ -38,8 +37,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/car', carRoutes);
 app.use('/api/review', reviewRoutes);
-
-socketService.setup(http);
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 

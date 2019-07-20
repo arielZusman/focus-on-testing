@@ -2,7 +2,7 @@ const carService = require('./car.service');
 const reviewService = require('../review/review.service');
 
 async function getCars(req, res) {
-    console.log('Session Car: ',req.session.id);
+    console.log('Session Car: ', req.session.id);
     const cars = await carService.query();
     res.json(cars);
 }
@@ -10,7 +10,7 @@ async function getCars(req, res) {
 async function getCar(req, res) {
     const carId = req.params.carId;
     console.log(carId);
-    
+
     const [car, reviews] = await Promise.all([
         carService.getById(carId),
         reviewService.query({ carId })
@@ -21,7 +21,7 @@ async function getCar(req, res) {
 
 async function deleteCar(req, res) {
     const carId = req.params.carId;
-    const result = await carService.remove(carId);
+    await carService.remove(carId);
     res.end(`Car ${carId} Deleted `);
 }
 
