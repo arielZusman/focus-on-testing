@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
-import UserStore from "@/modules/UserStore.js";
+import UserStore from "@/modules/UserStore";
 import CarsStore from "@/modules/CarsStore";
 
 Vue.use(Vuex);

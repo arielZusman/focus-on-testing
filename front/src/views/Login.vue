@@ -93,9 +93,10 @@ export default {
     }
   },
   methods: {
-    submit() {
+    async submit() {
       const type = this.isLogin ? "login" : "signup";
-      this.$store.dispatch({ type, userCred: this.userCred });
+      await this.$store.dispatch({ type, userCred: this.userCred });
+      this.$router.back();
     },
     switchForms() {
       this.userCred = {

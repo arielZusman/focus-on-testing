@@ -21,13 +21,13 @@ export default new Router({
       component: Login
     },
     {
-      path: "/car/:id",
+      path: "/car/:carId",
       name: "car-details",
       component: CarDetails,
       props: true
     },
     {
-      path: "/user/:id",
+      path: "/user/:userId",
       name: "userDetails",
       component: UserDetails,
       props: true

@@ -1,34 +1,26 @@
 <template>
-  <section
-    class="car-detials"
-    v-if="car"
-  >
-    <div
-      class="full-width"
-      :style="{ backgroundImage: `url(${car.img})` }"
-    >
+  <section class="car-detials" v-if="car">
+    <div class="full-width" :style="{ backgroundImage: `url(${car.img})` }">
       <div class="bg-overlay">
         <h1 class="display-3 py-5 text-center text-white">
           {{ car.model }}
         </h1>
       </div>
     </div>
+    <div class="pt-4">
+      <h1>Car Details 🚗</h1>
 
-    <h1>Car Details 🚗</h1>
-
-    <h2>Reviews</h2>
-    <review-list :reviews="reviews" />
-
-    <review-form
-      v-if="$store.getters.isUserLoggedIn"
-      @save-review="saveReview"
-    />
-    <router-link
-      v-else
-      to="/login"
-    >
-      Login to post your own reviews
-    </router-link>
+      <h2>Reviews</h2>
+      <review-list :reviews="reviews" />
+      <hr>
+      <review-form
+        v-if="$store.getters.isUserLoggedIn"
+        @save-review="saveReview"
+      />
+      <router-link v-else to="/login">
+        Login to post your own reviews
+      </router-link>
+    </div>
   </section>
 </template>
 
@@ -38,7 +30,7 @@ import ReviewService from "@/services/ReviewService.js";
 import ReviewList from "@/components/ReviewList.vue";
 import ReviewForm from "@/components/ReviewForm.vue";
 export default {
-  props: ["id"],
+  props: ["carId"],
   data() {
     return {
       car: null,
@@ -47,9 +39,9 @@ export default {
   },
   methods: {
     saveReview(review) {
-      var fullReview = {
+      const fullReview = {
         ...review,
-        carId: this.$route.params.id,
+        carId: this.carId,
         userId: this.$store.getters.loggedInUser._id
       };
       ReviewService.addReview(fullReview).then(review => {
@@ -58,10 +50,9 @@ export default {
     }
   },
   watch: {
-    "$route.params.id": {
+    "carId": {
       handler() {
-        var carId = this.$route.params.id;
-        CarSerivce.getById(carId).then(({ car, reviews }) => {
+        CarSerivce.getById(this.carId).then(({ car, reviews }) => {
           this.car = car;
           this.reviews = reviews;
         });

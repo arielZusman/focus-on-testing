@@ -6,8 +6,6 @@
       :key="review._id"
     >
       <review-preview
-        @user-clicked="$emit('user-clicked',review.userId)"
-        @car-clicked="$emit('car-clicked',review.carId)"
         :review="review"
       />
     </li>

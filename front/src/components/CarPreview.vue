@@ -7,16 +7,15 @@
     >
     <div class="card-body">
       <div class="card-title">
-        {{ car.model }} - ${{ car.price }}
+        <strong>{{ car.model }}</strong> - ${{ car.price }}
       </div>
       <div class="d-flex justify-content-between align-items-center">
         <router-link
           :to="'car/' + car._id"
           class="btn btn-outline-primary stretched-link"
         >
-          Car Details 🚗
+           🚗 Car Details
         </router-link>
-        <!--        <button class="btn btn-outline-success">Buy</button>-->
       </div>
     </div>
   </section>

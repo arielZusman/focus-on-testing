@@ -46,8 +46,5 @@ export default {
         localStorage.removeItem("loggedInUser");
       }
     },
-    getUsers(context) {
-      UserService.getUsers();
-    }
   }
 };

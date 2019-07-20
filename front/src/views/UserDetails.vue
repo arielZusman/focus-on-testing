@@ -12,6 +12,7 @@
 import UserService from "@/services/UserService.js";
 import ReviewList from "@/components/ReviewList.vue";
 export default {
+  props: ["userId"],
   data() {
     return {
       user: null,
@@ -19,11 +20,9 @@ export default {
     };
   },
   watch: {
-    "$route.params.id": {
+    userId: {
       handler() {
-        const userId = this.$route.params.id;
-        UserService.getById(userId).then(({ user, reviews }) => {
-          console.log({ reviews, user });
+        UserService.getById(this.userId).then(({ user, reviews }) => {
           this.user = user;
           this.reviews = reviews;
         });

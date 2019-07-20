@@ -4,7 +4,6 @@ export default {
   login,
   logout,
   signup,
-  getUsers,
   getById
 };
 
@@ -25,6 +24,3 @@ async function getById(id) {
   return await HttpService.ajax(`api/user/${id}`);
 }
 
-function getUsers() {
-  HttpService.ajax("api/user").then(res => console.log(res));
-}

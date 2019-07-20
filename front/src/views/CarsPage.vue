@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import CarSerivce from '@/services/CarService.js'
-import CarList from '@/components/CarList.vue' 
+import CarList from '@/components/CarList.vue'
 
 export default {
     created() {
