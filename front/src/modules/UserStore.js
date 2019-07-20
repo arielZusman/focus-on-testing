@@ -1,6 +1,10 @@
 import UserService from "../services/UserService.js";
+import { SET_USER, REMOVE_USER } from "./mutationTypes";
 import router from "@/router";
+
 export default {
+  namespaced: true,
+
   state: {
     user: {
       _id: "",
@@ -9,42 +13,36 @@ export default {
     }
   },
   getters: {
-    isUserLoggedIn: state => !!state.user._id,
-    loggedInUser: state => state.user
   },
   mutations: {
-    setUser(state, { user }) {
+    [SET_USER](state, user) {
       state.user = user;
     },
-    removeUser(state) {
-      state.user = {
-        _id: "",
-        username: "",
-        email: ""
-      };
+    [REMOVE_USER](state) {
+      state.user = null;
     }
   },
   actions: {
-    async login(context, { userCred }) {
+    async login({ commit }, { userCred }) {
       const user = await UserService.login(userCred);
-      context.commit({ type: "setUser", user });
+      commit(SET_USER, user);
+
       localStorage.setItem("loggedInUser", JSON.stringify(user));
-      router.push("/");
       return user;
     },
-    async signup(context, { userCred }) {
+    async signup({ commit }, { userCred }) {
       const user = await UserService.signup(userCred);
-      context.commit({ type: "setUser", user });
+      commit(SET_USER, user);
       localStorage.setItem("loggedInUser", JSON.stringify(user));
       return user;
     },
-    async logout(context) {
+    async logout({ commit }) {
       const result = await UserService.logout();
 
       if (result.message) {
-        context.commit({ type: "removeUser" });
+        commit(REMOVE_USER);
         localStorage.removeItem("loggedInUser");
       }
-    },
+    }
   }
 };

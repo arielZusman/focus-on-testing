@@ -12,9 +12,9 @@
 
       <h2>Reviews</h2>
       <review-list :reviews="reviews" />
-      <hr>
+      <hr />
       <review-form
-        v-if="$store.getters.isUserLoggedIn"
+        v-if="user"
         @save-review="saveReview"
       />
       <router-link v-else to="/login">
@@ -25,10 +25,14 @@
 </template>
 
 <script>
-import CarSerivce from "@/services/CarService.js";
+import CarService from "@/services/CarService.js";
 import ReviewService from "@/services/ReviewService.js";
 import ReviewList from "@/components/ReviewList.vue";
 import ReviewForm from "@/components/ReviewForm.vue";
+
+import { createNamespacedHelpers } from "vuex";
+
+const { mapState } = createNamespacedHelpers("UserStore");
 export default {
   props: ["carId"],
   data() {
@@ -37,12 +41,15 @@ export default {
       reviews: []
     };
   },
+  computed: {
+    ...mapState(["user"])
+  },
   methods: {
     saveReview(review) {
       const fullReview = {
         ...review,
         carId: this.carId,
-        userId: this.$store.getters.loggedInUser._id
+        userId: this.user._id
       };
       ReviewService.addReview(fullReview).then(review => {
         this.reviews.push(review);
@@ -50,9 +57,9 @@ export default {
     }
   },
   watch: {
-    "carId": {
+    carId: {
       handler() {
-        CarSerivce.getById(this.carId).then(({ car, reviews }) => {
+        CarService.getById(this.carId).then(({ car, reviews }) => {
           this.car = car;
           this.reviews = reviews;
         });

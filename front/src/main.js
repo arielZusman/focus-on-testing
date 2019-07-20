@@ -12,10 +12,10 @@ new Vue({
   store,
   render: h => h(App),
   created() {
-    var user = localStorage.getItem("loggedInUser");
+    let user = localStorage.getItem("loggedInUser");
     if (user) {
       user = JSON.parse(user);
-      this.$store.commit({ type: "setUser", user });
+      this.$store.commit('UserStore/SET_USER', user );
     }
   }
 }).$mount("#app");

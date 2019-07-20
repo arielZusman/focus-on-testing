@@ -1,22 +1,23 @@
 import CarService from "../services/CarService";
+import { SET_CARS } from "./mutationTypes";
 
 export default {
+  namespaced: true,
+
   state: {
     cars: []
   },
-  getters: {
-    carsToDisplay: state => state.cars
-  },
+  getters: {},
   mutations: {
-    setCars(state, { cars }) {
+    [SET_CARS](state, cars) {
       state.cars = cars;
     }
   },
   actions: {
-    loadCars(context) {
+    loadCars({ commit }) {
       return CarService.query().then(cars => {
         console.log({ cars });
-        context.commit({ type: "setCars", cars });
+        commit(SET_CARS, cars);
       });
     }
   }
