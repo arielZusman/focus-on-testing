@@ -5,20 +5,20 @@
 </template>
 
 <script>
-import CarList from "@/components/CarList.vue";
+import CarList from '@/components/CarList.vue';
 
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers } from 'vuex';
 
-const { mapActions, mapState } = createNamespacedHelpers("CarsStore");
+const { mapActions, mapState } = createNamespacedHelpers('CarsStore');
 export default {
   created() {
     this.loadCars();
   },
   computed: {
-    ...mapState(["cars"])
+    ...mapState(['cars'])
   },
   methods: {
-    ...mapActions(["loadCars"])
+    ...mapActions(['loadCars'])
   },
   components: {
     CarList

@@ -1,6 +1,6 @@
-import HttpService from "./HttpService";
+import HttpService from './HttpService';
 
-const BASE_URL = "api/car";
+const BASE_URL = 'api/car';
 
 async function query() {
   return await HttpService.ajax(`${BASE_URL}`);

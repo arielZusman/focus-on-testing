@@ -13,7 +13,7 @@
           placeholder="Your opinion matters.."
         />
       </div>
-      <br>
+      <br />
       <button class="btn btn-primary">
         Publish
       </button>
@@ -25,13 +25,13 @@
 export default {
   data() {
     return {
-      content: ""
+      content: ''
     };
   },
   methods: {
     saveReview() {
-      this.$emit("save-review", { content: this.content });
-      this.content = "";
+      this.$emit('save-review', { content: this.content });
+      this.content = '';
     }
   }
 };

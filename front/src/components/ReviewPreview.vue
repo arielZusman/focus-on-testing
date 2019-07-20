@@ -19,7 +19,10 @@
 <script>
 export default {
   props: {
-    review: Object
+    review: {
+      type: Object,
+      required: true
+    }
   }
 };
 </script>

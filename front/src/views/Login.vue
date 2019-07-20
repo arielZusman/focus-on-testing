@@ -11,7 +11,7 @@
             type="text"
             v-model="userCred.email"
             placeholder="email"
-          >
+          />
         </div>
         <div class="form-group">
           <input
@@ -19,18 +19,15 @@
             type="text"
             v-model="userCred.password"
             placeholder="password"
-          >
+          />
         </div>
-        <div
-          class="form-group"
-          v-if="!isLogin"
-        >
+        <div class="form-group" v-if="!isLogin">
           <input
             class="form-control"
             type="text"
             v-model="userCred.username"
             placeholder="username"
-          >
+          />
         </div>
         <div class="field">
           <div class="control">
@@ -45,10 +42,7 @@
         </div>
         <p>
           {{ switchText }}
-          <button
-            class="btn btn-link"
-            @click="switchForms"
-          >
+          <button class="btn btn-link" @click="switchForms">
             {{ switchTitle }}
           </button>
         </p>
@@ -59,7 +53,7 @@
 
 <script>
 export default {
-  name: "Login",
+  name: 'Login',
   data() {
     return {
       userCred: {
@@ -67,22 +61,22 @@ export default {
         password: null,
         username: null
       },
-      msg: "",
+      msg: '',
       isLogin: true
     };
   },
   created() {},
   computed: {
     title() {
-      return this.isLogin ? "Login" : "Sign Up";
+      return this.isLogin ? 'Login' : 'Sign Up';
     },
     switchTitle() {
-      return !this.isLogin ? "Login" : "Sign Up";
+      return !this.isLogin ? 'Login' : 'Sign Up';
     },
     switchText() {
       return this.isLogin
         ? "Don't have an account ?"
-        : "Already have an account ?";
+        : 'Already have an account ?';
     },
     isSubmitDisabled() {
       const isLoginDisabled = !(this.userCred.email && this.userCred.password);
@@ -94,7 +88,7 @@ export default {
   },
   methods: {
     async submit() {
-      const type = this.isLogin ? "login" : "signup";
+      const type = this.isLogin ? 'login' : 'signup';
       await this.$store.dispatch({ type, userCred: this.userCred });
       this.$router.back();
     },

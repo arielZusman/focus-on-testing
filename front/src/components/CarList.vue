@@ -1,21 +1,16 @@
 <template>
   <div class="car-list">
-    <car-preview
-      :car="car"
-      v-for="car in cars"
-      :key="car._id"
-    />
+    <car-preview :car="car" v-for="car in cars" :key="car._id" />
   </div>
 </template>
 
 <script>
-import CarPreview from "@/components/CarPreview.vue";
+import CarPreview from '@/components/CarPreview.vue';
 export default {
   props: {
     cars: {
       type: Array,
-
-      default: () => []
+      required: true
     }
   },
   components: {

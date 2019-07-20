@@ -27,16 +27,16 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers } from 'vuex';
 
-const { mapState, mapActions } = createNamespacedHelpers("UserStore");
+const { mapState, mapActions } = createNamespacedHelpers('UserStore');
 export default {
-  name: "AppHeader",
+  name: 'AppHeader',
   computed: {
-    ...mapState(["user"])
+    ...mapState(['user'])
   },
   methods: {
-    ...mapActions(["logout"])
+    ...mapActions(['logout'])
   }
 };
 </script>

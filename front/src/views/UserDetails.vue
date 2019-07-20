@@ -9,10 +9,15 @@
 </template>
 
 <script>
-import UserService from "@/services/UserService.js";
-import ReviewList from "@/components/ReviewList.vue";
+import UserService from '@/services/UserService.js';
+import ReviewList from '@/components/ReviewList.vue';
 export default {
-  props: ["userId"],
+  props: {
+    userId: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       user: null,

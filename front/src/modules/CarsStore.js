@@ -1,5 +1,5 @@
-import CarService from "../services/CarService";
-import { SET_CARS } from "./mutationTypes";
+import CarService from '../services/CarService';
+import { SET_CARS } from './mutationTypes';
 
 export default {
   namespaced: true,

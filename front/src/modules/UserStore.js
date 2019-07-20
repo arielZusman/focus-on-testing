@@ -1,19 +1,17 @@
-import UserService from "../services/UserService.js";
-import { SET_USER, REMOVE_USER } from "./mutationTypes";
-import router from "@/router";
+import UserService from '../services/UserService.js';
+import { SET_USER, REMOVE_USER } from './mutationTypes';
 
 export default {
   namespaced: true,
 
   state: {
     user: {
-      _id: "",
-      username: "",
-      email: ""
+      _id: '',
+      username: '',
+      email: ''
     }
   },
-  getters: {
-  },
+  getters: {},
   mutations: {
     [SET_USER](state, user) {
       state.user = user;
@@ -27,13 +25,13 @@ export default {
       const user = await UserService.login(userCred);
       commit(SET_USER, user);
 
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
       return user;
     },
     async signup({ commit }, { userCred }) {
       const user = await UserService.signup(userCred);
       commit(SET_USER, user);
-      localStorage.setItem("loggedInUser", JSON.stringify(user));
+      localStorage.setItem('loggedInUser', JSON.stringify(user));
       return user;
     },
     async logout({ commit }) {
@@ -41,7 +39,7 @@ export default {
 
       if (result.message) {
         commit(REMOVE_USER);
-        localStorage.removeItem("loggedInUser");
+        localStorage.removeItem('loggedInUser');
       }
     }
   }

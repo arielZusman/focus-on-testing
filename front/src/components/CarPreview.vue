@@ -1,10 +1,6 @@
 <template>
   <section class="card">
-    <img
-      :src="car.img"
-      class="card-img-top"
-      alt="..."
-    >
+    <img :src="car.img" class="card-img-top" alt="..." />
     <div class="card-body">
       <div class="card-title">
         <strong>{{ car.model }}</strong> - ${{ car.price }}
@@ -14,7 +10,7 @@
           :to="'car/' + car._id"
           class="btn btn-outline-primary stretched-link"
         >
-           🚗 Car Details
+          🚗 Car Details
         </router-link>
       </div>
     </div>
@@ -23,7 +19,12 @@
 
 <script>
 export default {
-  props: ["car"]
+  props: {
+    car: {
+      type: Object,
+      required: true
+    }
+  }
 };
 </script>
 

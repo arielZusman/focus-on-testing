@@ -13,10 +13,7 @@
       <h2>Reviews</h2>
       <review-list :reviews="reviews" />
       <hr />
-      <review-form
-        v-if="user"
-        @save-review="saveReview"
-      />
+      <review-form v-if="user" @save-review="saveReview" />
       <router-link v-else to="/login">
         Login to post your own reviews
       </router-link>
@@ -25,16 +22,21 @@
 </template>
 
 <script>
-import CarService from "@/services/CarService.js";
-import ReviewService from "@/services/ReviewService.js";
-import ReviewList from "@/components/ReviewList.vue";
-import ReviewForm from "@/components/ReviewForm.vue";
+import CarService from '@/services/CarService.js';
+import ReviewService from '@/services/ReviewService.js';
+import ReviewList from '@/components/ReviewList.vue';
+import ReviewForm from '@/components/ReviewForm.vue';
 
-import { createNamespacedHelpers } from "vuex";
+import { createNamespacedHelpers } from 'vuex';
 
-const { mapState } = createNamespacedHelpers("UserStore");
+const { mapState } = createNamespacedHelpers('UserStore');
 export default {
-  props: ["carId"],
+  props: {
+    carId: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       car: null,
@@ -42,7 +44,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(['user'])
   },
   methods: {
     saveReview(review) {
