@@ -40,7 +40,7 @@ function update(car) {
         const collection = db.collection('car');
         return collection
             .updateOne({ _id: car._id }, { $set: car })
-            .then(result => {
+            .then(() => {
                 return car;
             });
     });

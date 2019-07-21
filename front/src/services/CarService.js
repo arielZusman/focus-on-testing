@@ -1,19 +1,16 @@
-import axios from 'axios'
-const BASE_URL = process.env.NODE_ENV !== 'development'
-    ? '/car'
-    : '//localhost:3003/car'
+import HttpService from './HttpService';
 
-function query() {
-    return axios.get(BASE_URL)
-        .then(res => res.data)
+const BASE_URL = 'api/car';
+
+async function query() {
+  return await HttpService.ajax(`${BASE_URL}`);
 }
 
-function getById(id) {
-    return axios.get(`${BASE_URL}/${id}`)
-        .then(res => res.data)
+async function getById(id) {
+  return await HttpService.ajax(`${BASE_URL}/${id}`);
 }
 
 export default {
-    query,
-    getById
-}
+  query,
+  getById
+};

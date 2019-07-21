@@ -1,24 +1,18 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-import UserStore from './modules/UserStore.js'
-import SocketStore from './modules/SocketStore.js'
+import UserStore from '@/modules/UserStore';
+import CarsStore from '@/modules/CarsStore';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
-  strict: true,
+  strict: process.env.NODE_ENV !== 'production',
   modules: {
     UserStore,
-    SocketStore,
-},
-  state: {
-
+    CarsStore
   },
-  mutations: {
-
-  },
-  actions: {
-
-  }
-})
+  state: {},
+  mutations: {},
+  actions: {}
+});

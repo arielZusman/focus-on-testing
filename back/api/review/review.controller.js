@@ -19,4 +19,4 @@ async function addReview(req, res) {
 module.exports = {
     getReviews,
     addReview
-}
+};

@@ -1,28 +1,29 @@
 <template>
-<section class="car-page">
+  <section class="car-page">
     <car-list :cars="cars" />
-</section>
+  </section>
 </template>
 
 <script>
-import CarSerivce from '@/services/CarService.js'
-import CarList from '@/components/CarList.vue' 
+import CarList from '@/components/CarList.vue';
 
+import { createNamespacedHelpers } from 'vuex';
+
+const { mapActions, mapState } = createNamespacedHelpers('CarsStore');
 export default {
-    created() {
-        this.$store.dispatch({type: 'loadCars'})
-    },
-    computed:{
-        cars(){
-            return this.$store.getters.carsToDisplay
-        }
-    },
-    components: {
-        CarList
-    }
-}
+  created() {
+    this.loadCars();
+  },
+  computed: {
+    ...mapState(['cars'])
+  },
+  methods: {
+    ...mapActions(['loadCars'])
+  },
+  components: {
+    CarList
+  }
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -1,16 +1,15 @@
-import axios from 'axios'
-const BASE_URL = process.env.NODE_ENV !== 'development'
-    ? '/review'
-    : '//localhost:3003/review'
+import HttpService from './HttpService';
 
-function addReview({ content, userId, carId }) {
-    return axios.post(BASE_URL, {
-        content, userId, carId
-    })
-    .then(res => res.data)
-    
+const BASE_URL = 'api/review';
+
+async function addReview({ content, userId, carId }) {
+  return await HttpService.ajax(BASE_URL, 'post', {
+    content,
+    userId,
+    carId
+  });
 }
 
 export default {
-    addReview
-}
+  addReview
+};
