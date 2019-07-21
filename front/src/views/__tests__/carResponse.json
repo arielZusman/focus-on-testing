@@ -1,0 +1,46 @@
+{
+  "car": {
+    "_id": "5d3056128f1d3a2f5b0cc134",
+    "model": "Alfa Romeo Stelvio",
+    "img": "https://pictures.topspeed.com/IMG/crop/201905/alfa-romeo-stelvio-f-2_1600x0w.jpg",
+    "price": 42990
+  },
+  "reviews": [
+    {
+      "_id": "5d32cb1b240cd6387e9c23dc",
+      "userId": "5d2ea33db668e5eabfe34242",
+      "carId": "5d3056128f1d3a2f5b0cc134",
+      "content": "Great car",
+      "car": {
+        "_id": "5d3056128f1d3a2f5b0cc134",
+        "model": "Alfa Romeo Stelvio",
+        "img": "https://pictures.topspeed.com/IMG/crop/201905/alfa-romeo-stelvio-f-2_1600x0w.jpg",
+        "price": 42990
+      },
+      "user": {
+        "_id": "5d2ea33db668e5eabfe34242",
+        "email": "test1@test.com",
+        "password": "$2b$10$oF7ZzRou88uhuOQiwgbHOuVdCstqilsTrhy/U0USI/y5qFAHLd1wG",
+        "username": "test1"
+      }
+    },
+    {
+      "_id": "5d32cb1e240cd6387e9c23dd",
+      "userId": "5d2ea33db668e5eabfe34242",
+      "carId": "5d3056128f1d3a2f5b0cc134",
+      "content": "",
+      "car": {
+        "_id": "5d3056128f1d3a2f5b0cc134",
+        "model": "Alfa Romeo Stelvio",
+        "img": "https://pictures.topspeed.com/IMG/crop/201905/alfa-romeo-stelvio-f-2_1600x0w.jpg",
+        "price": 42990
+      },
+      "user": {
+        "_id": "5d2ea33db668e5eabfe34242",
+        "email": "test1@test.com",
+        "password": "$2b$10$oF7ZzRou88uhuOQiwgbHOuVdCstqilsTrhy/U0USI/y5qFAHLd1wG",
+        "username": "test1"
+      }
+    }
+  ]
+}

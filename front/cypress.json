@@ -1,0 +1,10 @@
+{
+  "pluginsFile": "tests/e2e/plugins/index.js",
+  "env": {
+    "API_URL": "http://localhost:3000/api",
+    "TEST_EMAIL": "puki.muki@test.com",
+    "TEST_PASS": "123456",
+    "USER_EMAIL": "test1@test.com",
+    "USER_PASS": "123456"
+  }
+}

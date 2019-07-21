@@ -2,7 +2,7 @@
   <section class="car-detials" v-if="car">
     <div class="full-width" :style="{ backgroundImage: `url(${car.img})` }">
       <div class="bg-overlay">
-        <h1 class="display-3 py-5 text-center text-white">
+        <h1 class="display-3 py-5 text-center text-white" data-test="car-model">
           {{ car.model }}
         </h1>
       </div>
@@ -14,7 +14,7 @@
       <review-list :reviews="reviews" />
       <hr />
       <review-form v-if="user" @save-review="saveReview" />
-      <router-link v-else to="/login">
+      <router-link v-else to="/login" data-test="login-link">
         Login to post your own reviews
       </router-link>
     </div>

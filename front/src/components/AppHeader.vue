@@ -10,7 +10,9 @@
     </ul>
     <ul class="navbar-nav">
       <template v-if="user">
-        <div class="navbar-text mr-1">Hi {{ user.username }}</div>
+        <div class="navbar-text mr-1" data-test="header-username">
+          Hi {{ user.username }}
+        </div>
         <div class="navbar-item">
           <button class="btn btn-warning" @click="logout">
             Logout

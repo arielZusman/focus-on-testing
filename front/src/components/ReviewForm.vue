@@ -11,10 +11,11 @@
           rows="5"
           v-model="content"
           placeholder="Your opinion matters.."
+          data-test="review-form-content"
         />
       </div>
       <br />
-      <button class="btn btn-primary">
+      <button class="btn btn-primary" data-test="submit">
         Publish
       </button>
     </form>
