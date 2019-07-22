@@ -1,5 +1,5 @@
 <template>
-  <section class="card">
+  <section class="card" data-test="car-details">
     <img :src="car.img" class="card-img-top" alt="..." />
     <div class="card-body">
       <div class="card-title">
