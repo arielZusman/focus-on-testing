@@ -9,12 +9,12 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
-  render: h => h(App),
   created() {
     let user = localStorage.getItem('loggedInUser');
     if (user) {
       user = JSON.parse(user);
       this.$store.commit('UserStore/SET_USER', user);
     }
-  }
+  },
+  render: h => h(App)
 }).$mount('#app');

@@ -31,7 +31,6 @@ describe('login', () => {
     cy.get('[data-test=submit]').click();
 
     cy.log('***** assert after login *****');
-    cy.url().should('eq', 'http://localhost:8080/#/');
     cy.get('[data-test=header-username]').should('contain', 'test1');
   });
 });

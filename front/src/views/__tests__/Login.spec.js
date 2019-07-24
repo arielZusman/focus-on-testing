@@ -20,7 +20,7 @@ describe('Login.vue', () => {
 
     state = {
       user: null
-    }
+    };
     store = new Vuex.Store({
       modules: {
         UserStore: {

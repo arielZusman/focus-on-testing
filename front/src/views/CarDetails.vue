@@ -1,5 +1,5 @@
 <template>
-  <section class="car-detials" v-if="car">
+  <section v-if="car" class="car-detials">
     <div class="full-width" :style="{ backgroundImage: `url(${car.img})` }">
       <div class="bg-overlay">
         <h1 class="display-3 py-5 text-center text-white" data-test="car-model">
@@ -31,6 +31,10 @@ import { createNamespacedHelpers } from 'vuex';
 
 const { mapState } = createNamespacedHelpers('UserStore');
 export default {
+  components: {
+    ReviewList,
+    ReviewForm
+  },
   props: {
     carId: {
       type: String,
@@ -46,6 +50,17 @@ export default {
   computed: {
     ...mapState(['user'])
   },
+  watch: {
+    carId: {
+      handler() {
+        CarService.getById(this.carId).then(({ car, reviews }) => {
+          this.car = car;
+          this.reviews = reviews;
+        });
+      },
+      immediate: true
+    }
+  },
   methods: {
     async saveReview(review) {
       const fullReview = {
@@ -60,21 +75,6 @@ export default {
 
       this.reviews.push(reviewResponse);
     }
-  },
-  watch: {
-    carId: {
-      handler() {
-        CarService.getById(this.carId).then(({ car, reviews }) => {
-          this.car = car;
-          this.reviews = reviews;
-        });
-      },
-      immediate: true
-    }
-  },
-  components: {
-    ReviewList,
-    ReviewForm
   }
 };
 </script>

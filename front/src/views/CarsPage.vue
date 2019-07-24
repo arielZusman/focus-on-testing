@@ -11,17 +11,17 @@ import { createNamespacedHelpers } from 'vuex';
 
 const { mapActions, mapState } = createNamespacedHelpers('CarsStore');
 export default {
-  created() {
-    this.loadCars();
+  components: {
+    CarList
   },
   computed: {
     ...mapState(['cars'])
   },
+  created() {
+    this.loadCars();
+  },
   methods: {
     ...mapActions(['loadCars'])
-  },
-  components: {
-    CarList
   }
 };
 </script>

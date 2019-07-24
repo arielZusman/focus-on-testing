@@ -6,10 +6,10 @@
     <form @submit.prevent="saveReview">
       <div class="form-group">
         <textarea
+          v-model="content"
           class="form-control"
           cols="30"
           rows="5"
-          v-model="content"
           placeholder="Your opinion matters.."
           data-test="review-form-content"
         />
