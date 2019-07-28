@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "start-server": "cd ../back && npm run server:dev",
-    "test:e2e": "start-server-and-test start-server http://localhost:3000/api/car 'vue-cli-service test:e2e --mode development'",
+    "test:e2e": "vue-cli-service test:e2e --mode development",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "vue-cli-service test:unit --watchAll"
   },

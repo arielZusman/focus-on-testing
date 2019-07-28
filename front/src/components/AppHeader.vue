@@ -19,7 +19,7 @@
           </button>
         </div>
       </template>
-      <div class="navbar-item" v-else>
+      <div v-else class="navbar-item">
         <router-link class="btn btn-primary" to="/login">
           <strong>Log in</strong>
         </router-link>

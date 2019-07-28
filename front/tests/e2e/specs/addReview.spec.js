@@ -10,7 +10,7 @@ describe('Add review', () => {
     cy.visit('/');
 
     cy.log('***** go to car details page *****');
-    cy.get('[data-test=car-details]:first-child').click();
+    cy.get('[data-test=car-details]:first-child a').click();
 
     cy.log('***** fill review *****');
     cy.get('[data-test=review-form-content]').type('Best car ever');

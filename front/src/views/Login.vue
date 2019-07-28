@@ -7,27 +7,27 @@
         </h1>
         <div class="form-group">
           <input
+            v-model="userCred.email"
             class="form-control"
             type="text"
-            v-model="userCred.email"
             placeholder="email"
             data-test="email"
           />
         </div>
         <div class="form-group">
           <input
+            v-model="userCred.password"
             class="form-control"
             type="text"
-            v-model="userCred.password"
             placeholder="password"
             data-test="password"
           />
         </div>
-        <div class="form-group" v-if="!isLogin">
+        <div v-if="!isLogin" class="form-group">
           <input
+            v-model="userCred.username"
             class="form-control"
             type="text"
-            v-model="userCred.username"
             placeholder="username"
             data-test="username"
           />
@@ -41,9 +41,9 @@
           <div class="control">
             <button
               class="btn btn-primary btn-block"
-              @click="submit"
               :disabled="isSubmitDisabled"
               data-test="submit"
+              @click="submit"
             >
               {{ title }}
             </button>
@@ -53,8 +53,8 @@
           {{ switchText }}
           <button
             class="btn btn-link"
-            @click="switchForms"
             data-test="switch-form"
+            @click="switchForms"
           >
             {{ switchTitle }}
           </button>

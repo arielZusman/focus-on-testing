@@ -1,5 +1,5 @@
 <template>
-  <section class="review-preview" v-if="review" data-test="review-preview">
+  <section v-if="review" class="review-preview" data-test="review-preview">
     <div class="review-content" data-test="review-content">
       {{ review.content }}
     </div>

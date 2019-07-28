@@ -19,7 +19,7 @@ localVue.use(Vuex);
 
 let state, store;
 
-describe.only('CarDetails.vue', () => {
+describe('CarDetails.vue', () => {
   beforeEach(() => {
     state = {
       user: null

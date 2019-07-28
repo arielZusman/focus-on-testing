@@ -12,6 +12,7 @@
 import UserService from '@/services/UserService.js';
 import ReviewList from '@/components/ReviewList.vue';
 export default {
+  components: { ReviewList },
   props: {
     userId: {
       type: String,
@@ -34,8 +35,7 @@ export default {
       },
       immediate: true
     }
-  },
-  components: { ReviewList }
+  }
 };
 </script>
 
