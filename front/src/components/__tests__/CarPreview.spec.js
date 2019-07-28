@@ -16,18 +16,18 @@ describe('CarPreview.vue', () => {
       cart: {}
     };
 
-    (actions = {
+    actions = {
       addToCart: jest.fn()
-    }),
-      (store = new Vuex.Store({
-        modules: {
-          UserStore: {
-            namespaced: true,
-            state,
-            actions
-          }
+    };
+    store = new Vuex.Store({
+      modules: {
+        UserStore: {
+          namespaced: true,
+          state,
+          actions
         }
-      }));
+      }
+    });
   });
 
   it('click on Add button should dispatch action with car details', async () => {
