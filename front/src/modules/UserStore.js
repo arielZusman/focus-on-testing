@@ -1,5 +1,5 @@
 import UserService from '../services/UserService.js';
-import { SET_USER, REMOVE_USER, ADD_TO_CART } from './mutationTypes';
+import { SET_USER, REMOVE_USER } from './mutationTypes';
 
 export default {
   namespaced: true,
@@ -15,21 +15,6 @@ export default {
     },
     [REMOVE_USER](state) {
       state.user = null;
-    },
-    [ADD_TO_CART](state, car) {
-      const cart = { ...state.cart };
-
-      if (cart[car._id]) {
-        cart[car._id].count += 1;
-      } else {
-        cart[car._id] = {
-          model: car.model,
-          price: car.price,
-          count: 1
-        };
-      }
-
-      state.cart = cart;
     }
   },
   actions: {
@@ -53,9 +38,6 @@ export default {
         commit(REMOVE_USER);
         localStorage.removeItem('loggedInUser');
       }
-    },
-    addToCart({ commit }, car) {
-      commit(ADD_TO_CART, car);
     }
   }
 };

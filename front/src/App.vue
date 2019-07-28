@@ -4,7 +4,6 @@
     <div class="container py-3">
       <div class="row">
         <router-view class="col-9 border-right" />
-        <Cart class="col-3"></Cart>
       </div>
     </div>
   </div>
@@ -12,12 +11,10 @@
 
 <script>
 import AppHeader from '@/components/AppHeader';
-import Cart from '@/components/Cart';
 
 export default {
   components: {
-    AppHeader,
-    Cart
+    AppHeader
   }
 };
 </script>

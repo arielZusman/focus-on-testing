@@ -11,32 +11,18 @@
         <router-link :to="'car/' + car._id" class="btn btn-outline-primary">
           🚗 Car Details
         </router-link>
-        <button
-          class="btn btn-primary"
-          data-test="add-to-cart"
-          @click="addToCart(car)"
-        >
-          Add
-        </button>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex';
-
-const { mapActions } = createNamespacedHelpers('UserStore');
-
 export default {
   props: {
     car: {
       type: Object,
       required: true
     }
-  },
-  methods: {
-    ...mapActions(['addToCart'])
   }
 };
 </script>
